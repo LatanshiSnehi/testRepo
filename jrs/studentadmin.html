@@ -1,0 +1,35 @@
+name=request.POST['name']
+	email=request.POST.get('email')
+	contact_no=request.POST['contact_no']
+	course=request.POST['course']
+	semester=request.POST['semester']
+	grade=request.POST['grade']
+	ptStu=StudentData.objects.get(email=email)
+	# ptStu.save()
+	# #ptStu=StudentData.objects.all()
+	# for 
+	ptStu.name=name
+	ptStu.contact_no=contact_no
+	ptStu.course=course
+	ptStu.semester=semester
+	ptStu.grade=grade
+	ptStu.save()
+	# i can't tell you all thing by my side you have to serach all the doubts you face
+	# # by yourself. So each and every doubt on google.
+	# in a company internship work is given to the interns.
+	# No one will tell how to do that. Thats how you learn all things.
+	# so search your doubts on internet.
+	return HttpResponse(request.POST)
+	# return render(request, 'jrs/studentadmin.html')
+
+
+def StudentProfile(request):
+		stuId=request.GET['student_id']
+		check=StudentData.objects.get(id=stuId)
+		print(check)
+		# email2=request.session['email']
+		# profile=StudentData.objects.get(email=email2)
+		
+
+		
+		return render(request, "jrs/studentprofile.html",{'details':check})

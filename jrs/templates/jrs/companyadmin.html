@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<style>
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 20%;
+  min-height: 600px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 711px;
+}
+html, body {
+   overflow-x: hidden;
+ }
+</style>
+</head>
+<body>
+<div class="row p-3" style="background-color:#3e3939" >
+      <div class="col-md-3">
+        <strong class="text-white p-3">{{company.id}}{{company.Company_name}}</strong>
+      </div>
+      <div class="col-md-9">
+        <div class="float-right">
+          <strong class="text-white p-3"><i class="fa fa-bell" aria-hidden="true"> </i></strong>
+          <a href="logOutC" class="btn btn-info">Log Out</a>
+        </div>
+      </div>
+    </div>
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'view')" id="defaultOpen"><i class="fa fa-stack-exchange" aria-hidden="true"></i>View Applicants List</a></button>
+  <button class="tablinks" id="openVacancy" onclick="openCity(event, 'addvacancy')"><i class="fa fa-plus" aria-hidden="true"></i>Add vacancy</a></button>
+  <button class="tablinks" id="openSelect" onclick="openCity(event, 'select')"><i class="fa fa-upload" aria-hidden="true"></i>Selected Applications</button>
+  <button class="tablinks" id="openPosted" onclick="openCity(event, 'posted')"><i class="fa fa-clipboard" aria-hidden="true"></i>Posted Vacancies</button>
+  <button class="tablinks" id="openDelete" onclick="openCity(event, 'delete')"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete vacancy</button>
+</div>
+<div align="center" id="view" style=" margin: 5px 0px">
+<div class="row" style="margin-left: 2px;">
+  <div class="col-md-12">
+    <table class="table" style="width: 100% ;">
+    <thead style="width: 100%">
+    <tr>
+        <th>Job Id</th>
+        <th>Student Id </th>
+        <th>Resume Id</th>
+        <th>Select</th>
+        <th>Reject</th>
+      </tr>
+    </thead>
+    <form action="" method='Post'>
+      {% csrf_token %}
+    <tbody>
+{% for i in appp %}
+      <tr>
+        <td>{{i.Job_Id.id}}</td>
+        <td>{{i.Userid.first_name}} {{i.Userid.last_name}}</td>
+        <td><a href="StudentProfile?student_id={{i.Userid.id}}" >view profile</a></td>
+        <td><a href="select?job_id={{i.id}}">Select</a> </td>
+        <td><a href="select?job_id={{i.id}}">Reject</a> </td>
+      </tr>
+{% endfor %}
+    </tbody>                  
+  </form>
+  </table>
+</div>
+</div>
+</div>
+<div id="addvacancy" style=" float: left; width: 800px; margin: 5px 21px" >
+  <form  method="post" action="../AddJob" id="about">
+      {% csrf_token %}
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6">
+              <label>Job Designation:</label>
+              <input type="hidden" name="company_id" value="{{company.id}}">
+              <input type="text" class="form-control" name="Job_Designation" placeholder="Job Designation" required="required">
+            </div>
+            <div class="col-lg-6">
+              <label>Start Date</label><br>
+              <input type="date" name="dob" class="form-control" required="required">
+            </div>
+          </div>
+      </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6">
+              <label>Job Description:</label>
+              <textarea type="text" class="form-control" name="Job_Description" placeholder="Job Description" required="required">
+              </textarea>
+              
+            </div>
+          <div class="col-lg-6">
+                <label>End Date</label><br>
+                <input type="date" name="end_date" class="form-control" required="required">
+             </div>  
+            </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6">
+              Mobile No.
+            </div>
+            <div class="col-lg-6">
+              <input type="text" class="form-control" name="contact" placeholder="Ex.91xxxxx" required="required">
+            </div>
+          </div>
+      </div>
+<div class="form-group bd" >
+</div>  
+              <div class="form-group bd">
+                    <input type="text" class="form-control" name="eligibility" placeholder="Eligiblity" required="required">
+                </div>
+                    <div class="form-group bd">
+                       <input type="text" class="form-control" name="skills" placeholder="Skills required" required="required">
+                    </div>
+                <div class="form-group bd">
+                     <input type="text" class="form-control" name="stream" placeholder="Stream" required="required">
+                </div>
+                <div class="form-group bd">
+                  <button type="submit" class="btn btn-secondary bg-secondary btn-lg btn-block">ADD</button>
+                </div>
+</div>    
+</form>
+</div>
+
+<div id="select" style="float: left; width: 800px; margin: 2px 10px" >
+   <table class="table table-striped" style="width: 100%; text-align: center;">
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>Email</th>
+        <th>contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>abcd</td>
+        <td>Doe@gmail.com</td>
+        <td>1234</td>
+      </tr>
+      <tr>
+        <td>abcd</td>
+        <td>Doe@gmail.com</td>
+        <td>1234</td>
+      </tr>
+      <tr>
+        <td>abcd</td>
+        <td>Doe@gmail.com</td>
+        <td>1234</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="posted" style="display: none">
+<div class="row" style="float: left; width: 668px;">
+  
+    
+      <div class="col-md-9" style="float: left;margin: 5px 21px">
+        <table class="table table-striped" style="width: 805px; text-align: center; ">
+           <thead>
+             <tr>
+               <th>S.no</th>
+               <th>Job Designation</th>
+               <th>Job Descriptions</th>
+               <th>Closing Date</th>
+             </tr>
+           </thead>
+           <tbody>
+             {% for i in Appli %}
+              <tr>
+                <input type="hidden" value="{{i.id}}" name="Job_Id">
+                
+                <td>{{i.id}}</td>
+                <td>{{i.Job_Designation}}</td>
+                <td>{{i.Job_Description}}</td>67
+                <td>{{i.end_date}}</td>
+                
+             </tr>
+             {% endfor %}
+           </tbody>
+         </table> 
+      </div>
+  
+</div>
+</div>
+  <div id="delete" style="  margin: 5px 21px">
+      <div class="row" style="f">
+       {% csrf_token %}
+         <div class="col-md-12" style="float: left;margin: 5px 21px">
+           <table class="table table-striped" style="width: 100%;">
+             <thead>
+               <tr>
+                <th>S.no</th>
+                <th>Job Deignation</th>
+                <th>Company name</th>
+                <th>Closing Date</th>
+                <th>Action</th>
+               </tr>
+             </thead>
+             <tbody>
+            {% for i in posts %}
+             <tr>
+                <input type="hidden" value="{{i.id}}" name="Job_Id">
+                <input type="hidden" value="{{i.company_id}}" name="company_id">
+                <input type="hidden" value="{{user.id}}" name="User_id">
+                <td>{{i.id}}</td>
+                <td>{{i.Job_Designation}}</td>
+                <th>{{i.company_id.Company_name}}</th>
+                <td>{{i.end_date}}</td>
+                <td><a href="DeleteJob?job_id={{i.id}}">Delete</a></td>
+                {% endfor %}
+              </tr>
+            </tbody>
+         </table> 
+      </div>
+
+  </div>
+</div>
+ </form>      
+  </div>  
+</div>
+<script>
+    $('#defaultOpen').click(function(){
+      $('#view').show();
+      $('#addvacancy').hide();
+      $('#select').hide();
+      $('#delete').hide();
+      $('#posted').hide();
+    });
+    $('#openVacancy').click(function(){
+      $('#addvacancy').show();
+      $('#view').hide();
+      $('#select').hide();
+      $('#delete').hide();
+      $('#posted').hide();
+    });
+    $('#openSelect').click(function(){
+      $('#select').show();
+      $('#view').hide();
+      $('#addvacancy').hide();
+      $('#delete').hide();
+      $('#posted').hide();
+    });
+    $('#openPosted').click(function(){
+      $('#posted').show();
+      $('#select').hide();
+      $('#view').hide();
+      $('#addvacancy').hide();
+      $('#delete').hide();
+    });
+    $('#openDelete').click(function(){
+      $('#delete').show();
+      $('#select').hide();
+      $('#view').hide();
+      $('#posted').hide();
+      $('#addvacancy').hide();
+    });
+
+
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html> 

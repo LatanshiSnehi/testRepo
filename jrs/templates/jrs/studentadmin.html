@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<style>
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 20%;
+  min-height: 600px;
+}
+html, body {
+   overflow-x: hidden;
+ }
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+{% load static %}
+.uploadd{
+  background-image: url("{% static 'images/uploadresume.png' %}");
+        background-size:100%;
+        background-repeat: no-repeat;
+        opacity: 0.4;
+
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 711px;
+}
+.timeline {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.timeline:after {
+  content: "";
+  height: auto;
+/*  width: 1px;*/
+  background: #e3e3e3;
+  position: absolute;
+  top: 5px;
+  left: 30px;
+  bottom: 25px;
+}
+.timeline.timeline-sm:after {
+  left: 12px;
+}
+.timeline li {
+  position: relative;
+  padding-left: 70px;
+  margin-bottom: 20px;
+}
+/*.timeline li:after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e3e3e3;
+  position: absolute;
+  left: 24px;
+  top: 5px;
+}*/
+.timeline li .timeline-date {
+  display: inline-block;
+  width: 100%;
+  color: #a6a6a6;
+  font-style: italic;
+  font-size: 13px;
+}
+.timeline.timeline-icons li {
+  padding-top: 7px;
+}
+.timeline.timeline-icons li:after {
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  left: 14px;
+  top: 0;
+  z-index: 11;
+}
+.timeline.timeline-icons li .timeline-icon {
+  position: absolute;
+  left: 23.5px;
+  top: 7px;
+  z-index: 12;
+}
+.timeline.timeline-icons li .timeline-icon [class*=glyphicon] {
+  top: -1px !important;
+}
+.timeline.timeline-icons.timeline-sm li {
+  padding-left: 40px;
+  margin-bottom: 10px;
+}
+.timeline.timeline-icons.timeline-sm li:after {
+  left: -5px;
+}
+.timeline.timeline-icons.timeline-sm li .timeline-icon {
+  left: 4.5px;
+}
+.timeline.timeline-advanced li {
+  padding-top: 0;
+}
+.timeline.timeline-advanced li:after {
+  background: #fff;
+  border: 1px solid #29b6d8;
+}
+.timeline.timeline-advanced li:before {
+  content: "";
+  width: 52px;
+  height: 52px;
+  border: 10px solid #fff;
+  position: absolute;
+  left: 4px;
+  top: -10px;
+  border-radius: 50%;
+  z-index: 12;
+}
+.timeline.timeline-advanced li .timeline-icon {
+  color: #29b6d8;
+}
+.timeline.timeline-advanced li .timeline-date {
+  width: 75px;
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  text-align: right;
+}
+.timeline.timeline-advanced li .timeline-title {
+  font-size: 17px;
+  margin-bottom: 0;
+  padding-top: 5px;
+  font-weight: bold;
+}
+.timeline.timeline-advanced li .timeline-subtitle {
+  display: inline-block;
+  width: 100%;
+  color: #a6a6a6;
+}
+.timeline.timeline-advanced li .timeline-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-right: 70px;
+}
+.timeline.timeline-advanced li .timeline-content p {
+  margin-bottom: 3px;
+}
+.timeline.timeline-advanced li .timeline-content .divider-dashed {
+  padding-top: 0px;
+  margin-bottom: 7px;
+  width: 200px;
+}
+.timeline.timeline-advanced li .timeline-user {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.timeline.timeline-advanced li .timeline-user:before,
+.timeline.timeline-advanced li .timeline-user:after {
+  content: " ";
+  display: table;
+}
+.timeline.timeline-advanced li .timeline-user:after {
+  clear: both;
+}
+.timeline.timeline-advanced li .timeline-user .timeline-avatar {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  float: left;
+  margin-right: 10px;
+}
+.timeline.timeline-advanced li .timeline-user .timeline-user-name {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.timeline.timeline-advanced li .timeline-user .timeline-user-subtitle {
+  color: #a6a6a6;
+  margin-top: -4px;
+  margin-bottom: 0;
+}
+.timeline.timeline-advanced li .timeline-link {
+  margin-left: 5px;
+  display: inline-block;
+}
+.timeline-load-more-btn {
+  margin-left: 70px;
+}
+.timeline-load-more-btn i {
+  margin-right: 5px;
+}
+#notii{
+  background-color: orange;
+  position: relative;
+  top: -9px;
+  right: -12px;
+  border-radius: 75%;
+  padding: 0px 7px;
+  width: 24px;
+}
+
+
+/* -----------------------------------------
+   Dropdown
+--------------------------------------- */
+.dropdown-menu{
+    padding:0 0 0 0;
+}
+a.dropdown-menu-header {
+    background: #f7f9fe;
+    font-weight: bold;
+    border-bottom: 1px solid #e3e3e3;
+}
+.dropdown-menu > li a {
+    padding: 10px 20px;
+}
+.dropdown{
+  max-height: 50px;
+}
+
+/* -----------------------------------------
+   Badge
+----------------------------------------- */
+
+.badge{
+    padding: 3px 5px 2px;
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    display: inline-block;
+    min-width: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+}
+.badge-danger {
+    background-color: #db5565;
+}
+</style>
+</head>
+<body>
+
+<div class="row p-3" style="background-color:#3e3939" >
+      <div class="col-md-3">
+
+        <strong class="text-white p-3">{{user.first_name}} {{user.last_name}}</strong>
+      </div>
+      <div class="col-md-9">
+        <div class="float-right">
+          
+           <div class="dropdown" style="  float: center;padding: 13px;width: 151px;float: left;">
+              <a href="#" onclick="return false;" role="button" data-toggle="dropdown" id="dropdownMenu1" data-target="#" style="float: left ; " aria-expanded="true">
+                   <strong class="text-white p-3">
+                          <!-- yha comparision krna ki if total 0 h to srif icon show hoga vrna ye else vala chlege. ok -->
+                      {% if 'total.status' == '0' %}
+                         <i class="fa fa-bell" aria-hidden="true"> </i>
+                      {% else %} 
+                        <span id="notiii" style="background-color: orange;position: relative;top: -9px;right: -12px;border-radius: 75%;padding: 0px 7px;width: 24px;">
+                          {{total}}</span>
+                          <i class="fa fa-bell" aria-hidden="true"> </i>
+                      {% endif %}
+                    </strong>
+                   
+              </a>
+       <!--  <span class="badge badge-danger">6</span> -->
+        <ul class="dropdown-menu dropdown-menu-left pull-right" id="notDiv" role="menu" aria-labelledby="dropdownMenu1">
+            <!-- <li role="presentation">
+                <a href="#" class="dropdown-menu-header">Notifications</a>
+            </li> -->
+            <ul class="timeline timeline-icons timeline-sm" style="margin:10px;width:210px">
+            
+            {% for notifys in noti %}
+             
+              <li>
+                  <p>
+                      <!-- {{notifys.notification}}: --> As you are applied for 
+                      <strong>{{notifys.Job_Id.Job_Designation}} </strong> in 
+                       <strong>{{notifys.Job_Id.company_id.Company_name}}</strong>  
+                       <p>So.. you are invited for interview.. ThankYou</p>
+                      <h6> {{notifys.postedon}}</h6>
+
+                     
+                    
+                  </p>
+              </li>
+            <hr>
+            
+           {% endfor %}            
+          <!--   
+                <!-- <li>
+                    <p>
+                        Your “Volume Trendline” PDF is ready <a href="">here</a>
+                        <span class="timeline-icon"><i class="fa fa-file-pdf-o" style="color:red"></i></span>
+                        <span class="timeline-date">Dec 10, 22:00</span>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Your “Marketplace Report” PDF is ready <a href="">here</a>
+                        <span class="timeline-icon"><i class="fa fa-file-pdf-o"  style="color:red"></i></span>
+                        <span class="timeline-date">Dec 6, 10:17</span>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Your “Top Words” spreadsheet is ready <a href="">here</a>
+                        <span class="timeline-icon"><i class="fa fa-file-excel-o"  style="color:green"></i></span>
+                        <span class="timeline-date">Dec 5, 04:36</span>
+                    </p>
+                </li>
+            </ul>
+            <li role="presentation">
+                <a href="#" class="dropdown-menu-header"></a>
+            </li> -->
+        </ul>
+    </div>
+     
+         
+          <a href="logOut" class="btn btn-info">Log Out</a>
+        </div>
+      </div>
+    </div>
+   
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'view')" id="defaultOpen"><i class="fa fa-stack-exchange" aria-hidden="true"></i>View Profile</a></button>
+  <button class="tablinks" id="openJobs" onclick="openCity(event, 'viewjobs')"><i class="fa fa-search" aria-hidden="true"></i>View Jobs</a></button>
+  <button class="tablinks" id="openUpload" onclick="openCity(event, 'upload')"><i class="fa fa-upload" aria-hidden="true"></i>Upload Resume</button>
+  <button class="tablinks" id="openCreate" onclick="openCity(event, 'create')"><i class="fa fa-plus" aria-hidden="true"></i>Create Resume</button>
+   <button class="tablinks" id="openApply" onclick="openCity(event, 'apply')"><i class="fa fa-spinner" aria-hidden="true"></i>Status</button>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#dropdownMenu1').click(function(){
+          var csrf_token='{{ csrf_token }}';
+            $('#notDiv').toggle();
+            var student_id='{{user.id}}';
+            // alert(student_id);
+            $.ajax({
+              headers:{'X-CSRFToken': csrf_token},
+              url:'updateNotiSta',
+              type:"POST",
+              data:{Id:student_id},
+              success:function(response)
+                {
+                  alert(response);
+                  // response=JSON.parse(response);
+                  
+                }
+            });
+        });
+    });
+</script>
+
+<form method='POST' action="../ViewProfile">
+{% csrf_token %}
+
+<div id="view" >
+<h3 style="text-align: center;font-size: 2.5rem; text-shadow: 0 0 9px black">Profile</h3>
+  
+  <div class="row" style="padding-right: 5px">
+    <div class="col-lg-9">
+     <form>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" value = "{{user.first_name}} {{user.last_name}}">  
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" name="email" class="form-control" readonly value="{{user.email}}">  
+        </div>
+        
+
+        <div class="form-group">
+          <label>Mobile no</label>
+          <input type="text" name="contact_no" class="form-control" value=  "{{user.contact_no}}">
+  
+        </div>
+        <div class="form-group">
+          <label>Course</label>
+          <input type="text" name="course" class="form-control" value=  "{{user.course}}">  
+        </div>
+        <div class="form-group">
+          <label>Semester</label>
+          <input type="text" name="semester" class="form-control" value=  "{{user.semester}}">  
+        </div>
+        <div class="form-group">
+          <label>Grade</label>
+          <input type="text" name="grade" class="form-control" value=  "{{user.grade}}">  
+        </div>
+        <div class="form-group">
+         <input type="submit" value="Update" class="btn btn-success">  
+        </div>
+      </form> 
+    </div>
+    <div class="col-lg-3" style="padding:5px;">
+      <form action="../abcd" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group">
+          {% load static %}
+          {% if user.newProfilePic is null %}
+             <img src="{% static  'images/dummy.jpg' %}" name="newProfilePic">
+          {% else %}
+          <!-- <img src="{% static  'images/dummy.jpg' %}" name="image"> -->
+          <img src='/media/{{user.newProfilePic}}' name="newProfilePic" style="height: 200px; width: 200px;">
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <input type="hidden" name="student_id" value="{{user.id}}"> 
+          <input type="file" name="newProfilePic" >  
+        </div>
+        <div class="form-group">
+         <input type="submit" value="Upload" class="btn btn-success">  
+        </div>
+      </form>
+    </div>
+  </div>
+  
+      
+</div>  
+</form>        
+
+
+<div id="viewjobs" style="display: none">
+ <!--  <h3>view jobs</h3> -->
+ 
+<div class="row" style="float: left; width: 668px;">
+  <form action='../JobApply' method='Post'>
+    {% csrf_token %}
+      <div class="col-md-9" style="float: left;margin: 5px 21px">
+       
+         <table class="table " style="width: 805px; text-align: center; ">
+           <thead>
+             <tr>
+               <th>S.no</th>
+               <th>Job Deignation</th>
+              
+               <th>Company name</th>
+               
+               <th>Job Descriptions</th>
+               <th>Closing Date</th>
+               <th>Action</th>
+             </tr>
+           </thead>
+           <tbody>
+            {% for i in jobs %}
+            
+
+
+              <tr>
+                
+                <input type="hidden" value="{{i.id}}" name="Job_Id">
+                <input type="hidden" value="{{i.company_id}}" name="company_id">
+                <input type="hidden" value="{{user.id}}" name="User_id">
+                <td>{{i.id}}</td>
+                <td>{{i.Job_Designation}}</td>
+              
+                
+                <td>{{i.company_id.Company_name}}</td>
+                
+                <td>{{i.Job_Description}}</td>
+                <td>{{i.end_date}}</td>
+                <td><input type="submit" value="Apply" class="btn btn-info"></td>
+                {% endfor %}
+              </tr>    
+
+            
+           </tbody>
+         </table> 
+      
+          
+          <!-- <form>
+          {% for i in jobs %}
+          {{i.image}} -->
+           
+           <!--  <H5 style="color:white; background-color: #77779f;">Job Designation</H5>{{i.Job_Designation}}
+            <h5 style="color:white; background-color:#77779f;">Job Description</h5>{{i.Job_Description}}
+            <h5 style="color:white; background-color: #77779f;">Start Date</h5>{{i.dob}}
+            <h5 style="color:white; background-color: #77779f">End Date</h5>{{i.end_date}}
+            <h5 style="color:white; background-color: #77779f;">Mobile no.</h5>{{i.contact}}
+            <h5 style="color:white; background-color: #77779f;">Eligibilty</h5>{{i.eligibility}}
+            <h5 style="color:white; background-color: #77779f;">Skills</h5>{{i.skills}}
+            <h5 style="color:white; background-color: #77779f;">Stream</h5>{{i.stream}}
+            <hr style="color:white; background-color:#77779f;"> -->
+
+   <!--  <div class="form-group bd">
+            <button type="submit" class="btn btn-primary ">Apply</button>
+    </div>
+          {% endfor %}
+        </form> -->
+          
+          
+        
+        
+        
+      </div>
+   </form>
+</div>
+</div>
+   
+{% load static %}
+<div id="upload" style="height:100%;">
+  <div class="row" style="padding-left: 50px; padding-top: 30px; height: 1000px; width: 800px;">
+    
+
+  <div style="background-color: black; color:white; width: 800px; padding-left: 50px; ">
+  <h3 style="text-align: center; text-decoration: bold; ">Upload Your Resume </h3>
+</div><br>
+<div class="uploadd">
+  <form action="../resumeUpload" method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+   <P><input type="hidden" name="Userid" value="{{user.id}}"></P>
+   <div style="padding:350PX; padding-left: 20px;">
+  <input type="file" name="Resume_file" ><button type="submit"   class="btn btn-secondary bg-info ">Upload</button>
+
+   
+  
+           
+    
+ </div>
+  </form>
+</div>
+</div>
+  
+</div>
+<div id="create" style="display: none ; float: left; width: 668px; margin: 5px 21px" >
+  <form  method="post" action="../ResumeView " id="about">
+      {% csrf_token %}
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-6">
+              <label>Full Name:</label>
+              <input type="text" class="form-control" name="Full_name" placeholder="Full Name" required="required">
+            </div>
+          
+            <div class="col-lg-6">
+              <label>D.O.B</label><br>
+              <input type="date" name="dob" class="form-control" required="required">
+            </div>
+          </div>
+           
+
+            
+                    
+        </div>
+        <div class="form-group bd">
+          <div class="row">
+            <div class="col-lg-6">
+              <label>Email:</label>
+            </div>
+            <div class="col-lg-6">
+              <input type="email" class="form-control" name="email" placeholder="  Email" required="required">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-6">
+              Mobile No.
+            </div>
+            <div class="col-lg-6">
+              <input type="text" class="form-control" name="contact" placeholder="Ex.91xxxxx" required="required">
+            </div>
+          </div>
+          
+        </div>
+        
+    <!-- <div class="form-group">
+            <div class="row">
+                      
+               <div class="col-lg-6 radd">Fresher<input type="radio" class="form-group" name="fe"  required="required"> </div>
+                 <div class="col-lg-6 radd">Experience<input type="radio" class="form-group" name="fe" required="required"></div>
+             </div>          
+        </div> -->   
+        <div class="form-group bd">
+              <input type="text" class="form-control" id="10th" name="10th" placeholder="10th" required="required">
+          </div> 
+          <script>
+        document.getElementById("10th").disabled = true;
+       </script>
+          <div class="row">
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="high_marks" placeholder="percentage" required="required" >
+          </div>
+        
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="high_year" placeholder="Year" required="required">
+          </div>
+        </div>
+          <br>
+
+          
+              <div class="form-group bd">
+                <input type="text" class="form-control" id="12th" name="12th" placeholder="12th" required="required">
+              </div>
+               <script>
+        document.getElementById("12th").disabled = true;
+       </script> 
+
+           
+          <div class="row">
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="inter_marks" placeholder="Percentage" required="required" >
+          </div>
+        
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="inter_year" placeholder="Year" required="required">
+          </div>
+        </div>
+          <br>
+
+
+         
+
+        <br>
+         
+
+         <div class="form-group bd">
+              <input type="text" class="form-control" id="diploma" name="diploma" placeholder="diploma" >
+          </div> 
+          <script>
+        document.getElementById("diploma").disabled = true;
+       </script> 
+          <div class="row">
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="diplomamarks" placeholder="Marks" >
+          </div>
+        
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="diplomayear" placeholder="Year" >
+          </div>
+
+        </div>
+        <br>
+        
+
+        
+                <div class="form-group bd">
+                    <input type="text" class="form-control" id="College" name="College" placeholder="College/School Name" >
+                </div>
+                <script>
+        document.getElementById("College").disabled = true;
+       </script> 
+                    <div class="form-group bd">
+                       <input type="text" class="form-control" name="board" placeholder="Board/University" >
+                    </div>
+                <div class="form-group bd">
+                     <input type="text" class="form-control" name="stream" placeholder="Stream" >
+                </div>
+                
+      <div class="form-group ">
+        <div class="row">
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="marks" placeholder="Percentage/CGPA" required="required" >
+          </div>
+        
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="year" placeholder="Year" required="required">
+          </div>
+        </div>
+         
+             
+      </div>  
+      <div class="form-group bd">
+              <input type="text" class="form-control" id="Post_Graduate" name="Post_Graduate" placeholder="Post Graduate" >
+          </div>
+          <script>
+        document.getElementById("Post_Graduate").disabled = true;
+       </script>  
+          <div class="row">
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="Post_marks" placeholder="Marks" required="required" >
+          </div>
+        
+          <div class="col-lg-6">
+            <input type="text" class="form-control" name="Post_year" placeholder="Year" required="required">
+          </div>
+
+        </div>  
+
+        
+        
+        
+
+         <br>
+         <p>Upload Image
+         <div class="form-group bd">
+                      <input type="file"  name="fileToUpload" id="fileToUpload"
+                      placeholder="photo" >
+                </div>
+        
+        <!--<div class="form-group">
+      <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#" id="policy" >Terms of Use</a> &amp; <a href="#" id="policy">Privacy Policy</a></label>
+    </div>-->
+    <div class="form-group bd">
+            <button type="submit" class="btn btn-secondary bg-secondary btn-lg btn-block">Create</button>
+    </div>
+    </form>
+</div>
+<div id="apply" style="display: none; width:100%;">
+ <!--  <h3>view jobs</h3> -->
+ 
+<div class="row" style="float: left; width: px;">
+  <form action='POST' method="">
+    {% csrf_token %}
+      <div class="col-md-12" style="float:center ;margin: 5px 24px;  width: 100%;">
+       
+         <table class="table " style="width: 800px;" width="100%" border="1">
+           <thead>
+             <tr>
+               <th>S.no</th>
+               <th>Company name</th>
+               <th>Job Deignation</th>
+               <th>Job Descriptions</th>
+               <th>Last Date</th>
+               <th>Status</th>
+</div>
+</div> 
+</div>           
+            
+<!--<td><a href="test?student_id={{apps.Userid.id}} ">View Profile</a></td>-->
+             
+           </thead>
+           <tbody>
+            {% for appss in Appli %}
+            <td>{{appss.Job_Id.id}}</td>
+            <!-- <td>{{appss.Company_name}}</td> Ek problem h ab. Company ka name kese nikaloge??? vha pr to sir id di hue h  1....2..3
+ye hi to bol rha hu. vha pr foreign key bnao kha
+             -->
+             <td>{{appss.Job_Id.company_id.Company_name}}</td>
+             <td>{{appss.Job_Id.Job_Designation}}
+            <td>{{appss.Job_Id.Job_Description}}</td>
+            <td>{{appss.Job_Id.end_date}}</td>
+            <td><span class="text-success">{{appss.status}}</span></td>
+        </tr>
+           {% endfor %}
+       
+       
+       </tbody>
+            </table>
+
+              
+            
+
+            
+          
+          
+      </div>
+   </form>
+</div>
+</div>
+
+
+<script>
+    $('#defaultOpen').click(function(){
+      $('#view').show();
+      $('#viewjobs').hide();
+      $('#upload').hide();
+      $('#create').hide();
+      $('#apply').hide();
+    });
+    $('#openJobs').click(function(){
+      $('#viewjobs').show();
+      $('#view').hide();
+      $('#upload').hide();
+      $('#create').hide();
+      $('#apply').hide();
+    });
+    $('#openUpload').click(function(){
+      $('#upload').show();
+      $('#view').hide();
+      $('#viewjobs').hide();
+      $('#create').hide();
+      $('#apply').hide();
+    });
+    $('#openCreate').click(function(){
+      $('#upload').hide();
+      $('#view').hide();
+      $('#viewjobs').hide();
+      $('#create').show();
+      $('#apply').hide();
+    });
+    $('#openApply').click(function(){
+      $('#upload').hide();
+      $('#view').hide();
+      $('#viewjobs').hide();
+      $('#create').hide();
+      $('#apply').show();
+    });
+    
+
+
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+// $(document).ready(function(){
+  // var ctoken='{{csrf_token}}';
+  // $.ajax({
+  //   headers:{'X-CSRFToken': ctoken},
+  //   url:'fetchJobs',
+  //   type:"POST",
+    
+  //   success:function(latanshi)
+  //           {
+              // console.log(latanshi.length);
+             // latanshi=JSON.parse(latanshi);
+              // for(let i=0; i<latanshi.length; i++)
+              // {
+              //   var html='';
+              //   html+='<tr>';
+              //   html+='<td>'+latanshi[i].desig+'</td>';
+              //   html+='<td>'+latanshi[i].desc+'</td>';
+              //   html+='</tr>';
+              //   $('#allJobs').append(html);
+              // }
+//             }
+//   });
+// });
+</script>
+   
+</body>
+</html> 

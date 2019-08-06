@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Job Recruitment system</title>
+    <style type="text/css">
+     {% load static %} 
+     .hero{
+        background-image: url("{% static 'images/office2.jpg' %}");
+        background-size:cover;
+        
+
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      
+        }
+        {
+          color:white;
+        }
+        #images{
+          width:90%;
+          height:50%;
+        }
+        .bd-example{
+          height: 50%;
+          width: 100%;
+        }
+        .bg-dark{
+          background-color:grey; 
+        }
+        .text-white
+        {
+          color:white;
+        }
+        .ur{
+          
+          background-color:white;
+
+          padding-top: 2px;
+          padding-bottom: 2px;
+          
+        }
+        .col-lg-4 bg-secondary{
+          background-color: white;
+        }
+        .temp{
+          color:hsla(343, 74%, 41%, 0.76);
+          font-style: 
+        }
+        .tem{
+          color: #1c3ba9;
+        }
+        #opening{
+          color:black;
+        }
+        #service{
+          color:white;
+
+        }
+   
+        html, body {
+   overflow-x: hidden;
+ }
+ #contact{
+  color:white;
+ }
+ .ab.col-md-6{
+  padding-top:20;
+ }
+ #myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  outline: none; /* Remove outline */
+  border: none;
+  background-color: #101010; /* Set a background color */ /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+  height: 50px;
+ width: 50px;
+}
+
+#myBtn:hover {
+  background-color: #101010; /* Add a dark-grey background on hover */
+}
+.fa-angle-up
+{
+  font-size: 30px;
+  color: white;
+}
+.divAup{
+  float:center;
+  height: 180px;
+  width: 250px;
+  background-color: white;
+  padding:50px;
+  position: relative;
+  bottom: 125px;
+  width: 32%;
+  padding:0px 10px;
+  margin:25px;
+}
+.col-sm-4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+.abt-icon span {
+    font-size: 3em;
+    color: #0083ff;
+}
+.abt-icon {
+    width: 80px;
+    height: 80px;
+    border: solid;
+    border-width: 3px;
+    border-top-color: #0087fc;
+    border-bottom-color: #00f0ac;
+    border-left-color: #00efac;
+    border-right-color: #0083ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    }
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+    </style>
+    
+  </head>
+         
+
+
+
+
+
+
+  <body>
+     {% load static %} 
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"> <i class="fa fa-angle-up"></i></button>
+    <div class="container-fluid">
+      <div class="hero">
+         <div class="row">
+            <div class="col-lg-12">
+              
+              <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>                        
+                    </button>
+                    
+                  </div>
+                   <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
+                      
+                      <li><a href="#opening" class="btn btn-secondary" ><i class="fa fa-hand-o-down" aria-hidden="true">  ABOUT </i></a></li>
+                      <li><a href="#" class="btn btn-secondary"><i class="fa fa-calendar-o" aria-hidden="true"></i> EVENTS</a></li>
+                      <li><a href="#" class="btn btn-secondary" ><i class="fa fa-newspaper-o" aria-hidden="true"></i>  NEWS</a></li>
+                      <li><a href="#service" class="btn btn-secondary" ><i class="fa fa-cogs" aria-hidden="true"></i>  SERVICES</a></li>
+                      <li><a href="#contact" class="btn btn-secondary" ><i class="fa fa-address-book" aria-hidden="true"></i>  CONTACTS</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                     <!--  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span>Sign Up <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="stuReg">As Student</a></li>
+                          <li><a href="CompanyReg">As Company</a></li>
+                          <li><a href="CollegeReg">As college/University</a></li>
+                        </ul>
+                      </li>
+                       <li class="dropdown">
+                        
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-log-in"></span>Login<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          
+                          <li><a href="stulogin">As Student</a></li>
+                          <li><a href="CompanyLogin">As Company</a></li>
+                          <li><a href="CollegeLogin">As college/University</a></li>
+                        </ul>
+                      </li>
+                      <!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+          <div class="row" style="padding: 0px 50px 0px 50px;height: 350px;
+}">
+            <div class="col-lg-9" style="color:white">
+              <!-- <h1>Mega Job Fair</h1>
+              <h4> Dev Bhoomi Group Of Institutions</h4>
+              <h5>jobfair@dbgisre.edu.in</h5> -->
+             <h2><b> Get your Jobs noticed with</b></h2> 
+              <h2><b>Mega Job Fair Services</b></h2>
+              <h5><b>Our services are solution oriented</b></h5>
+              <h5><b>our team ensures that the output is as per the client acceptance.</b></h5>
+              
+            </div>
+          </div>
+      </div>
+      <br>
+      <br>
+<div class="container-fluid" style="padding-left: 150px;padding-right:150px;margin-top: -130px;">
+
+  <div class="row">
+
+    <div class=" col-sm-4 col-xs-4"  >
+     
+          <img src="{% static 'images/block1.jpg'%}" style="width: 100%;height:200px; border: 4px solid white;border-radius: 0.25rem;" >
+    
+    
+      
+
+    </div>
+    <div class="bg-secondary  col-sm-4 col-xs-4" >
+      <img src="{% static 'images/block2.jpeg'%}" style="width: 100%;height:200px; border: 4px solid white;border-radius: 0.25rem;" >
+    </div>
+    <div class="bg-secondary  col-sm-4 col-xs-4" >
+      <img src="{% static 'images/block3.jpg'%}" style="width: 100%; height:200px;border: 4px solid white;border-radius: 0.25rem;" >
+    </div>
+  </div>
+</div>
+
+<div class="row " style="padding:100px;padding-left: 100px;">
+<center><p style="color: #0083ff;text-transform: capitalize;font-size: 2.5em;font-weight: 600;text-shadow: 1px 1px 1px #969696;">Process</p>
+<div style="padding-bottom: 110px;font-family:cursive;">
+<p>An online recruitment system is a service </p>
+<p>that automates a company's recruiting needs by getting volumes of employement apllications over the internet</p>
+</div></center>
+  <div class="col-lg-4">
+     <div class="row">
+      <div class="col-md-4">
+       <div class="abt-icon">
+        <span class="fa fa-laptop"></span>
+       </div>
+      </div>
+      <div class="col-md-8">
+    
+     </div>
+      
+      <b style="font-size:20px;padding-top: 5px;font-family: cursive;"><i>Recruitment</i></b>
+      <p><i>“Recruitment” is the process of finding and hiring the best candidate for a job.</i></p>
+    </div>
+  
+  </div>
+  <div class="col-lg-4">
+    <div class="row">
+     <div class="col-md-4">
+      <div class="abt-icon">
+       <span class="fa fa-pencil"></span>
+      </div>
+     </div>
+     <div class="col-md-8">
+      <b><i style="font-size:20px;padding-top: 5px;font-family: cursive;">Interview</i></b>
+      <p><i>"Interview" is the conversation,where question are asked and answers are given</i></p>
+     </div>
+  </div>
+  
+  </div>
+  <div class="col-lg-4">
+   <div class="row">
+    <div class="col-md-4">
+      <div class="abt-icon">
+    <span class="fa fa-ravelry"></span>
+  </div>
+  </div>
+  <div class="col-md-8">
+  <b><i style="font-size:20px;padding-top: 5px;">Selection</i></b>
+  <p><i>Review, Resume and match each camdidate's background to the job recquirements</i></p>
+</div>
+</div>
+  </div>
+
+</div>
+      <!-- <div class="row" style="margin-top:50px;">
+        <div class="col-lg-3 bg-secondary ur"  style="padding-left:20px;min-height:380px">
+          <h2>WHAT IS RECRUITMENT</h2>
+          <p>In human resource management, “recruitment” is the process of finding and hiring the best and most qualified candidate for a job opening, in a timely and cost-effective manner. It can also be defined as the “process of searching for prospective employees and stimulating and encouraging them to apply for jobs in an organization”.</p>
+
+          <p>It is one whole process, with a full life cycle, that begins with identification of the needs of the company with respect to the job, and ends with the introduction of the employee to the organization.</p>  
+        </div>
+        <div class="col-lg-6 bg-secondary"  style="padding:0px 20px">
+          <div class="row">
+          <div class="col-lg-12">
+           <div id="myCarousel" class="carousel slide" data-ride="carousel">
+           
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            
+            <div class="carousel-inner">
+              <div class="item active" height="500px">
+                <img src="{% static 'images\slide5.jpg' %}" height="500" width="100%" class="d-block w-100" alt="...">
+              </div>
+
+              <div class="item">
+                <img src="{% static 'images\slide4.jpg' %}" height="500"  width="100%" class="d-block w-100" alt="...">
+              </div>
+            
+              <div class="item">
+                <img src="{% static 'images\slide6.png' %}" height="500"  width="100%" class="d-block w-100" alt="...">
+              </div>
+            </div>
+
+            
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        
+        </div>
+        </div>
+        <div class="col-lg-3 bg-secondary ur" style= " padding:0px 10px;min-height:380px">
+           <h2> To ensure compliance with policies and laws.</h2>
+           <p>There are various rules, laws and regulations that organizations must adhere to when it comes to its human resources management. Equal opportunity employment and non-discrimination in hiring are two of them. By following a recruitment process, the chances of the organization violating these policies will be low.</p>
+          <p>This is how you can create your employer value proposition and convince talent to join your company.</p>
+        </div>      
+      </div> 
+      <br> -->
+      
+      <div class="row" style="padding-bottom: 100px;">
+        <div class="col-md-6">
+          
+              <div  class=""  align="center"><h2 style="color:black;text-transform: capitalize;font-size: 2.5em;font-weight: 600;text-shadow: 1px 1px 1px #969696;" ><a id="opening">About Us</a></h2> </div>
+               <p  style="font-size:15px;font-family: cursive;">
+                 The campus recruitment is a new and public base platform. We are started this to help the students. Companies and Colleges and University. Campus Recruitment System is a platform which is used to create the student career and achieve the goals. 
+               </p>
+               <p style="font-size:15px;font-family: cursive;">
+                  College and University also contact with the company and they asked for the placement drive, which is grow the reputation of the college and Unviversity 
+               </p>
+               
+            
+        </div>
+        <div class="ab col-md-6 " style="padding-top:20;">
+         
+          
+          <img src="{% static 'images/aboutus.jpg' %}" width="100%" height="350" style="padding-top:20px;padding-bottom:20px;">
+        </div>
+      </div>
+      
+   
+     <div class="row"  style="padding-bottom: 100px;">
+        <div class="col-md-6">
+          <img id="imagess" src="{% static 'images\services.jpeg' %}" width="100%" height="350" style="padding-top:20px;padding-bottom:20px;">
+        </div>
+        <div class="col-md-6" style="font-size:15px;">
+         <div   align="center"><a id="service"><h2 style="color:black;text-transform: capitalize;font-size: 2.5em;font-weight: 600;text-shadow: 1px 1px 1px #969696;"s>Services</h2></a> </div>
+          <p style="font-size:15px;font-family: cursive;">
+            After getting an overwhelming response for our previous MEGA job fairs, from students and TPO's by and large, we would like to have the privilege of inviting you to our website for rebounding the last time excellence and achievements this time also.
+          </p>
+          <p style="font-size:15px;font-family: cursive;">
+          So, let us invite the students from M.Tech, MBA, BBA, BCA, B.TECH, MCA B.PHARMA, D.PHARMA, POLYTECHNIC DIPLOMA , ITI , B.Sc, B.A. and B.Com and Other Graduates/PostGraduates for taking part in Mega Job Fair.
+
+          
+          </p>
+        
+        </div>
+    </div>
+    
+      
+<div class="row" style="padding-bottom: 10px;">
+          <div class="col-md-6">
+            <div   align="center"><h2 style="color:black;text-transform: capitalize;font-size: 2.5em;font-weight: 600;text-shadow: 1px 1px 1px #969696;">P.S.</h2> </div>
+            <ul style="font-size:15px;font-family: cursive;">
+             <li>
+               Please grace the event with your benevolent participation to make the event, a grand success. 
+
+             </li>
+             <li>All candidate has to bring updated cv (multiple copies), 2 Passport size colour photographs, Photo Id(college ID/DL), and all original documents. We will not provide any print out or photocopies to the visiting students.
+             </li>
+             <li>
+               All participants students are advised to make their own Transportaion, Boarding and lodging arrangements.
+             </li>
+             <li>
+               All TPO's are requested to send us the details of participating studnets as per attched Excel Format on jobfair@dbgisre.edu.in
+             </li>
+             <li> Individual student is not required to send the excel sheet or resume. he or she can fill online registration form</li>
+           </ul>
+             
+          </div>
+          <div class="col-md-6">
+            <img src="{% static 'images\pss.jpg' %}"  width="100%" height="350" sheight="350" style="padding-top:20px;padding-bottom:20px;">
+          </div>
+</div>
+<div class="row" style="padding:50px;">
+  <h2 style=" text-align:center;padding:50px;color:#0083ff;text-transform: capitalize;font-size: 2.5em;font-weight: 600;text-shadow: 1px 1px 1px #969696; padding-bottom: 50px;">Latest Jobs</h2>
+   <div class=" col-sm-4 "  >
+    <div class="card" style="width: 230px;border: 1px solid blue;">
+  <img src="{% static 'images/job.jpg' %}" style="height: 180px;width: 224PX;" class="card-img-top" alt="...">
+   <div class="card-body">
+    <h5 class="card-title" style="font-size:20px;font-family: cursive;">Latest Jobs</h5>
+   <p style="font-size:15px;font-family: cursive;">{% for homm in hom %}
+     {{homm.Job_Designation}}
+    {% endfor %}</p>
+    <center><a href="StudentReg" class="btn btn-primary">Sign Up</a></center>
+      </div>
+     </div>
+     </div>
+    <div class="bg-secondary  col-sm-4 " >
+      <img src="{% static 'images/latest.png' %}" style="height: 200px;width: 200px;padding: 20px;" >
+   </div>
+    <div class="bg-secondary  col-sm-4 " >
+      <div class="card" style="width: 230px;border: 1px solid blue;"">
+   <img src="{% static 'images/com.jpg' %}" style="height: 180px;width: 229PX;" class="card-img-top" alt="...">
+  <div class="card-body" >
+    <h5 style="font-size:20px;font-family: cursive;" class="card-title">Companies</h5>
+       <p style="font-size:15px;font-family: cursive;">{% for homm in hom %}
+     {{homm.company_id.Company_name}}
+    {% endfor %}</p>
+    <center><a href="#" class="btn btn-primary">Know more</a></center>
+     </div>
+   </div>
+     </div>
+</div>
+
+
+      <div class="row" style="padding-bottom: 50px;">
+         <div align="center"><h2 style="color:black;text-transform: capitalize;font-size: 2.5em;font-weight: 600;text-shadow: 1px 1px 1px #969696;padding-bottom: 30px;">Venue</h2> </div>
+          <div class="col-sm-6" >
+           <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13828.586465021186!2d77.614916!3d29.9464611!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf8b6ccc88ac32bd!2sDev+Bhoomi+Group+of+Institutions%2C+Saharanpur!5e0!3m2!1sen!2sin!4v1564829447721!5m2!1sen!2sin" width="500" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+          <div class="col-md-6" style="padding:20px;">
+           
+            <p style="font-size:15px;font-family: cursive;">Dev Bhoomi Group of Institutions
+            <p style="font-size:15px;font-family: cursive;"> Village Beri Jama, Dabki Road,</p>
+            <p style="font-size:15px;font-family: cursive;"> Towards DM Residence via-Civil Hospital Saharanpur (U.P.)
+            <p style="font-size:15px;font-family: cursive;"> Hosting a recruitment event is a valuable opportunity to grow your talent pool and make a lasting impression as an employer </p>
+
+            </p>
+          </div>
+      </div>
+          
+      
+
+      
+      <div class="row" style="padding: 50px;">
+        <h2 style=" text-align:center;color:#0083ff;text-transform: capitalize;font-size: 2.5em;font-weight: 600;text-shadow: 1px 1px 1px #969696; padding-bottom: 70px;">Contacts</h2>
+        <div class="col-sm-6">
+          <div class="row" >
+            <div class="col-sm-3">
+              <div class="abt-icon">
+                
+                <span class="fa fa-mobile" aria-hidden="true"></span>
+                
+              </div>
+            </div>
+            <div class="col-sm-9">
+              <h4>Mobile No.</h4>
+              <h5> +918006107782, +91-9627559532, 9897812994, 9457780000</h5>
+            </div>
+</div>
+        </div>
+        <div class="col-sm-6" >
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="abt-icon">
+                
+                <span class="fa fa-envelope" aria-hidden="true"></span>
+                
+              </div>
+            </div>
+            <div class="col-sm-9">
+              <h4>Email Id</h4>
+              <P>dbgi@dbgisre.edu.in</P>
+            </div>
+          </div>
+        </div>
+
+    
+    </div>
+
+
+
+<div class="row bg-dark" style="color: white;padding:50px; padding-top:30px; margin-top:30px;">
+  <div class="col-lg-6">
+    <ul style="list-style: none">
+            <h3>Social Networks</h3>
+              <li><i class="fa fa-facebook-official" aria-hidden="true"></i><a id="hoomee" href="https://www.facebook.com/dbgisre/" style="color: white;"> FaceBook</a></li>
+              <li><i class="fa fa-envelope-o" aria-hidden="true"></i> Instagram</li>
+              <li><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</li>
+              <li><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</li>
+            </ul>
+  </div>
+  <div class="col-lg-6">
+     <ul style="list-style: none">
+            <h3>Navigation</h3>
+              <li><i class="fa fa-home" aria-hidden="true"></i> Home</li>
+              <li><i class="fa fa-hand-o-down" aria-hidden="true"></i>About</li>
+              <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>  News</li>
+              <li><i class="fa fa-cogs" aria-hidden="true"></i>  Services</li>
+            </ul>
+
+  </div>
+</div>
+
+
+<div class='row' style="background-color: #5a96d0; text-align:right; color:white;">
+  <div class=col-md-12 >
+    <h5> © All rights are reserved</h5>
+
+
+  </div>  
+</div>         
+
+<!--      < <div class="col-md-6">
+          <div   align="center"><h2>Contacts</h2> </div>
+           <p>Thanks and Regards:</p>
+          <p> Training and Placement Cell</p>
+          <p>Dev Bhoomi Group of Institutions-Saharanpur Campus Dabki</p>
+          <P>Road Via Civil Hospital- Saharanpur (U.P.)</P>
+          <h5> +918006107782, +91-9627559532, 9897812994, 9457780000</h5>
+        </div>
+        
+
+
+    <div class="row">
+      <div class="row navbar navbar-inverse text-white">
+        <div class="col-md-3 bg-secondary" style="font-size:16px;">
+           <ul style="list-style: none">
+             <h3> Company's</h3>
+              <li>ABC company</li>
+              <li>CBA company</li>
+              <li>Xyz company</li>
+              <li>PQR company</li>
+            </ul>
+        </div>
+        <div class="col-md-3 bg-secondary text-white" style="font-size:16px;">
+           
+           <ul style="list-style: none">
+            <h3>Social Networks</h3>
+              <li><i class="fa fa-facebook-official" aria-hidden="true"></i> FaceBook</li>
+              <li><i class="fa fa-envelope-o" aria-hidden="true"></i> Gmail</li>
+              <li><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</li>
+              <li><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</li>
+            </ul>
+        </div>
+        <div class="col-md-3 bg-secondary text-white" style="font-size:16px;">
+          
+          <ul style="list-style: none">
+            <h3>Industries</h3>
+            <li>Mechanical's company</li>
+            <li>CSE's company</li>
+            <li>EEE's company</li>
+            <li>ECE's company</li>
+            <li>Civil's company</li>
+          </ul>
+        </div>
+        <div class="col-md-3 bg-secondary text-white"  style="font-size:16px;">
+          <ul style="list-style: none">
+            <a id="contact"><h3>Contacts</h3></a>
+            <li>Email-id: devbhoomigroup@gmail.com, aktu@gmail.com</li>
+            <li>Contact No. 877689789,163689730</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row inverse">
+        <div class="col-lg-12">
+          <footer class="footer bg-dark">
+            <div class="footer2 bg-secondary text-white">
+              <marquee>All Rights Are Reserved. @copyright</marquee>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div> -->
+    <script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

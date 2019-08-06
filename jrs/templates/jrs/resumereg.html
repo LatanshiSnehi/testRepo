@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<title> As a company  Register Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<style type="text/css">
+	body{
+		color: #fff;
+  
+
+	
+		font-family: 'Roboto', sans-serif;
+	}
+  .checkbox-inline{
+    color:black;
+
+  
+  }
+  .hint{
+    color:black;
+    text-align:center;
+    font-size:30px;
+
+    padding-top: 4%;
+  
+  }
+
+    .form-control{
+		height: 40px;
+		box-shadow: none;
+		color: #969fa4;
+    border:1px solid grey;
+	}
+	.form-control:focus{
+		border-color: #5cb85c;
+	}
+    .form-control, .btn{        
+        border-radius: 2px solid grey ;
+
+    }
+	.signup-form{
+		width: 400px;
+		margin: 0 auto;
+		padding: 30px 0;
+	}
+	.signup-form h2{
+		color:white;
+        margin: 0 0 15px;
+		position: relative;
+		text-align: center;
+    }
+	.signup-form h2:before, .signup-form h2:after{
+		content: "";
+		height: 2px;
+		width: 30%;
+
+	
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+	}	
+	.signup-form h2:before{
+		left: 0;
+	}
+	.signup-form h2:after{
+		right: 0;
+	}
+    .signup-form .hint-text{
+		color: white;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+    .signup-form form{
+		color: #999;
+		border-radius: 3px;
+    	margin-bottom: 15px;
+      
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+	.signup-form .form-group{
+		margin-bottom: 20px;
+	}
+	.signup-form input[type="checkbox"]{
+		margin-top: 3px;
+	}
+	.signup-form .btn{        
+        font-size: 16px;
+        font-weight: bold;		
+		min-width: 140px;
+        outline: none !important;
+    }
+	.signup-form .row div:first-child{
+		padding-right: 10px;
+    
+    
+
+
+	}
+	.signup-form .row div:last-child{
+		padding-left: 10px;
+	}    	
+    .signup-form a{
+		color: #fff;
+		text-decoration: underline;
+	}
+    .signup-form a:hover{
+		text-decoration: none;
+	}
+	.signup-form form a{
+		color: #5cb85c;
+		text-decoration: none;
+	}	
+	.signup-form form a:hover{
+		text-decoration: underline;
+
+
+} 
+.radd{
+  font-size:20px;
+  padding-top: 2px;
+}
+  
+        .bg-dark{
+          background-color:grey; 
+        }
+        .text-white
+        {
+          color:white;
+
+        }
+        .about{
+          border-radius: 1px solid black;
+          background-color: #eee;
+          margin-top:60px;
+        }
+      
+       
+      
+    </style>
+    
+  </head>
+         
+
+
+
+
+
+
+  <body>
+
+
+    
+  <div class="signup-form about">
+  
+    
+		
+		<p class="hint"> -- RESUME -- </p>
+     <form  method="post" action="../reg/ " id="about">
+      {% csrf_token %}
+        <div class="form-group">
+			     <div class="">
+				      <div class="bd"><input type="text" class="form-control" name="Full_name" placeholder="Full Name" required="required"></div>
+        <br>
+				   <div class="bd"><input type="text" class="form-control" name="dob" placeholder="Date Of Birth" required="required"></div>
+			     </div>        	
+        </div>
+        <div class="form-group bd">
+        	<input type="email" class="form-control" name="email" placeholder="  Email" required="required">
+        </div>
+		    <div class="form-group bd">
+            <input type="password" class="form-control" name="contact" placeholder="Contact No" required="required">
+        </div>
+		<!--<div class="form-group">
+            <input type="radio" class="form-control" name="fresher" placeholder="fresher" required="required">
+            
+            <input type="radio" class="form-control" name="experience" placeholder="Experience" required="required">
+            
+    </div>
+    <div class="row">
+                 <div class="form-group">
+                  
+              
+                    
+                    <input type="radio" name="gender" value="male"> Fresher<br>
+                                <input type="radio" name="gender" value="female"> Experience<br>
+                              
+                    
+                </div>-->
+        
+
+        
+        <!-- <div classs="form-group">
+            <input type="city" class="form-control" name="City" placeholder="City" required="required">
+        </div>-->
+
+        <div class="form-group">
+            <div class="row">
+                      
+               <div class="col-lg-6 radd">Fresher<input type="radio" class="form-group" name="fe"  required="required"> </div>
+                 <div class="col-lg-6 radd">Experience<input type="radio" class="form-group" name="fe" required="required"></div>
+             </div>          
+        </div>    
+          <div class="form-group bd" >
+           	<select name="city" class="form-control">
+           		<option value="10th">10th</option>
+           		 <option value="12th">12th</option>
+           		  <option value="graduate">Graduate</option>
+           		  <option value="pgraduate">Post Graduate</option>
+                <option value="diploma">Diploma</option>
+           	</select>
+          </div>  
+                <div class="form-group bd">
+                    <input type="text" class="form-control" name="College" placeholder="College/School Name" required="required">
+                </div>
+                    <div class="form-group bd">
+                       <input type="text" class="form-control" name="board" placeholder="Board/University" required="required">
+                    </div>
+                <div class="form-group bd">
+                     <input type="text" class="form-control" name="stream" placeholder="Stream" required="required">
+                </div>
+                <div class="form-group bd">
+                      <input type="file" class="form-control" name="fileToUpload" id="fileToUpload"
+                      placeholder="photo" required="required">
+                </div>
+      <div class="form-group ">
+         <div class="row" style="border-color:solid black;border-radius: 2px;">
+             <div class="col-xs-6  " style="border-color:solid black;border-radius: 2px;"><input type="text" class="form-control" name="marks" placeholder="Marks" required="required" ></div>
+             <div class="col-xs-6 " style="border-color:solid black;border-radius: 2px;"><input type="text" class="form-control" name="year" placeholder="Year" required="required"></div>
+          </div>          
+      </div>    
+
+        
+        
+        
+
+         <br>
+        <!--<div class="form-group">
+			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#" id="policy" >Terms of Use</a> &amp; <a href="#" id="policy">Privacy Policy</a></label>
+		</div>-->
+		<div class="form-group bd">
+            <button type="submit" class="btn btn-secondary bg-secondary btn-lg btn-block">Create</button>
+    </div>
+    </form>
+	<!--<div class="text-center">Already have an account? <a href="#">Sign in</a></div>
+</div>-->
+<script>
+	
+</script>
+   </div>
+  </div>  
+</body>
+</html>                            
